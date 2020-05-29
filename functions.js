@@ -50,6 +50,13 @@ function longestWord(input1) {
 //       return Math.max.apply(null, subArray);
 //    });
 // }
+//function largestOfFour(arr) {
+//    let answer = []
+//    for (let i = 0; i < arr.length; i++) {
+//      answer.push(Math.max(...arr[i]))
+//    }
+//    return answer
+//  }
 
 // confirm the ending
 // can use .endsWith method or substring method
@@ -97,16 +104,19 @@ function truncateStr(input1, input2) {
    return input1;
 }
 
-// need to figure out why its 0 all the time
-function findersKeepers(input1) {
-   // input1 = arr
-   let num = 0;
-   for (var i = 0; i < input1.length; i++) {
+// finders keepers
+function findersKeepers(input1, input2) {
+   // input1 = num
+   // input2 = num
+
+   let arr = [input1, input2];
+
+   for (var i = 0; i < arr.length; i++) {
       let num = arr[i];
-      if (num % 3 === 0) {
+      if (num % 4 === 0) {
+         return num;
       }
    }
-   return num;
 }
 
 // Boo who - checking if value is a boolean primitive
@@ -117,4 +127,78 @@ function booWho(input1) {
       return true;
    }
    return false;
+}
+
+// title case a sentence
+
+function capTitle(input1) {
+   // input1 = string
+   return input1
+      .toLowerCase() // lowercases all words in string
+      .split(" ") // splits each word in the string
+      .map((word) => {
+         // manipulates each word in array
+         // each letter in each word (0 place) is capitalized and put in new array, then
+         // rest of the word is concatnaed to the capitalized letter in the new array made by map
+         return word[0].toUpperCase() + word.slice(1);
+      })
+      .join(" "); // joins all elements in array back together
+}
+
+// slice and splice
+function sliceNSplice(input1) {
+   // input1 = index of where to insert element of second array
+   let arr1 = [" Earth", " Fire", " Water", " Air"];
+   let arr2 = [" Earth Kingdom", " Fire Nation", " Water Tribe", " Air Nomads"];
+   let allNationsAndElements = arr2.slice(); // copy of array2
+   allNationsAndElements.splice(input1, 0, ...arr1); // splice(index of elem, how many to replace, elem that is going to replace)
+   // operator ... used to add each elem individually. just copying array would keep it in bracet form
+   return allNationsAndElements;
+}
+
+// falsy bouncer
+// Falsy values in JavaScript are false, null, 0, "", undefined, and NaN
+function byeFalsy(input1) {
+   let arr = [7, "Hi", "", false, 9, 0, input1];
+   return arr.filter((x) => x); // this works because filter method returns truthy values from the callback
+
+   // this is basically answer above but in short form
+   // return arr.filter(function (x) {
+   // return x;
+}
+
+// where do i belong
+
+function whereDoIBelong(input1) {
+   let arr = [21, 7, 42, 59];
+   arr.push(input1);
+   arr.sort(function (a, b) {
+      return a - b;
+   });
+   return arr.indexOf(input1);
+}
+
+// mutation
+function mutation(input1, input2) {
+   let firstWord = input1.toLowerCase();
+   let secondWord = input2.toLowerCase();
+   for (var i = 0; i < secondWord.length; i++) {
+      if (firstWord.indexOf(secondWord[i]) < 0) {
+         return false;
+      }
+   }
+   return true;
+}
+
+// chunky money // need to fix
+function chunkyMonkey(input1, input2) {
+   let arr = input1;
+   let size = input2;
+   let newArr = [];
+   let i = 0;
+   while (i < arr.length) {
+      newArr.push(arr.slice(i, i + size));
+      i += size;
+   }
+   return newArr;
 }
