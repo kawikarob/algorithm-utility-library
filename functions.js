@@ -41,22 +41,18 @@ function longestWord(input1) {
    }
    return longestWord;
 }
+// largest numbers in the array
+function largestNumArr(input1) {
+   // input1 = array of numbers
+   let arr = [43, 21, 77, 92, 2, 36, input1];
+   let newArr = Math.max(...arr);
 
-// NEED TO figure out how to implement  !!!!
-// function largestNumArr(input1) {
-//    // input1 = array of numbers
-
-//    return input1.map(function (subArray) {
-//       return Math.max.apply(null, subArray);
-//    });
-// }
-//function largestOfFour(arr) {
-//    let answer = []
-//    for (let i = 0; i < arr.length; i++) {
-//      answer.push(Math.max(...arr[i]))
-//    }
-//    return answer
-//  }
+   console.log(newArr);
+   return newArr;
+}
+// return input1.map(function (subArray) {
+//    //       return Math.max.apply(null, subArray);
+//    //    });
 
 // confirm the ending
 // can use .endsWith method or substring method
@@ -190,15 +186,16 @@ function mutation(input1, input2) {
    return true;
 }
 
-// chunky money // need to fix
+// chunky money // NEED TO FIX
 function chunkyMonkey(input1, input2) {
-   let arr = input1;
-   let size = input2;
-   let newArr = [];
-   let i = 0;
-   while (i < arr.length) {
-      newArr.push(arr.slice(i, i + size));
-      i += size;
+   var arr = input1;
+   var size = input2;
+   var newArr = [];
+   var i = 0;
+   while (arr.length > 0) {
+      newArr.push(arr.splice(i, size));
+      // i += size;
    }
+   console.log(newArr);
    return newArr;
 }
